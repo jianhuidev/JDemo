@@ -24,8 +24,8 @@ import com.example.jdemo.main.vm.DetailViewModel;
 
 public class DetailActivity extends AppCompatActivity {
 
-    ActivityDetailBinding binding;
-    DetailViewModel mViewModel;
+    private ActivityDetailBinding binding;
+    private DetailViewModel mViewModel;
 //    LiveData<Shoe> shoeLiveData;
 
     @Override

@@ -25,6 +25,7 @@ import com.example.jdemo.databinding.FragmentShoeBinding;
 import com.example.jdemo.db.entity.Shoe;
 import com.example.jdemo.db.repository.ShoeRepository;
 import com.example.jdemo.main.vm.ShoeViewModel;
+import com.example.jdemo.main.vm.ShoeViewModelFactory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ShoeFragment extends Fragment {
@@ -44,8 +45,9 @@ public class ShoeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mViewModel = new ViewModelProvider(this).get(ShoeViewModel.class);
-        mViewModel.setRepository(ShoeRepository.getInstance(getContext()));
+//        mViewModel = new ViewModelProvider(this).get(ShoeViewModel.class);
+//        mViewModel.setRepository(ShoeRepository.getInstance(getContext()));
+        providerShoeViewModel();
         binding.setLifecycleOwner(this);
 
         mAdapter = new ShoeAdapter(getContext());
@@ -196,5 +198,10 @@ public class ShoeFragment extends Fragment {
         binding.gpNike.setVisibility(isShow ? View.VISIBLE : View.GONE);
         binding.gpAdidas.setVisibility(isShow ? View.VISIBLE : View.GONE);
         binding.gpOther.setVisibility(isShow ? View.VISIBLE : View.GONE);
+    }
+
+    private void providerShoeViewModel() {
+        ShoeViewModelFactory shoeViewModelFactory = new ShoeViewModelFactory(ShoeRepository.getInstance(getContext()));
+        mViewModel = shoeViewModelFactory.create(ShoeViewModel.class);
     }
 }

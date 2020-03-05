@@ -70,9 +70,13 @@ public class ShoeViewModel extends ViewModel {
 
     private ShoeRepository shoeRepository;
 
-    public void setRepository(ShoeRepository shoeRepository) {
+    public ShoeViewModel(ShoeRepository shoeRepository) {
         this.shoeRepository = shoeRepository;
     }
+
+    //    public void setRepository(ShoeRepository shoeRepository) {
+//        this.shoeRepository = shoeRepository;
+//    }
 
     public MutableLiveData<String> getBrand() {
         if (brand == null) {

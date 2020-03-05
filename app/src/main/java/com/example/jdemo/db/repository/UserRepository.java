@@ -1,6 +1,9 @@
 package com.example.jdemo.db.repository;
 
 import android.content.Context;
+
+import androidx.lifecycle.LiveData;
+
 import com.example.jdemo.db.AppDataBase;
 import com.example.jdemo.db.dao.UserDao;
 import com.example.jdemo.db.entity.User;
@@ -15,6 +18,10 @@ public class UserRepository {
 
     public User findUserById(long id) {
         return userDao.findUserById(id);
+    }
+
+    public LiveData<User> getUserByIdLiveData(long id) {
+        return userDao.getUserByIdLiveData(id);
     }
 
     public User login(String account, String pwd) {

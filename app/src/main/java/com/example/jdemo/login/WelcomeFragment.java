@@ -19,10 +19,6 @@ import com.example.jdemo.R;
  */
 public class WelcomeFragment extends Fragment {
 
-//    public WelcomeFragment() {
-//    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

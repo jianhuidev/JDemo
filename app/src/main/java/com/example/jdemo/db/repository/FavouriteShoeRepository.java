@@ -12,7 +12,6 @@ import java.util.Calendar;
 
 public class FavouriteShoeRepository {
 
-
     /**
      * 查看某个用户是否有喜欢记录
      */
