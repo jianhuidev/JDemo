@@ -87,24 +87,37 @@ public class LoginFragment extends Fragment {
     }
 
     private void login() {
-        Pool.execute(new XAsync<User>() {
+        mViewModel.loginLD().observe(getViewLifecycleOwner(), new Observer<User>() {
             @Override
-            protected User task() {
-                Log.e("LoginFragment","xxxxxxxxxxxx");
-                return  mViewModel.login();
-            }
-
-            @Override
-            protected void callback(User result) {
-                if (result != null) {
+            public void onChanged(User user) {
+                if (user != null) {
                     Toast.makeText(getContext(),"登录成功",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(),MainActivity.class));
-                    Log.e("LoginFragment",result.getAccount() + " - " + result.getPwd());
+                    Log.e("LoginFragment",user.getAccount() + " - " + user.getPwd());
                 } else {
                     Log.e("LoginFragment","null");
                 }
             }
         });
+
+//        Pool.execute(new XAsync<User>() {
+//            @Override
+//            protected User task() {
+//                Log.e("LoginFragment","xxxxxxxxxxxx");
+//                return  mViewModel.login();
+//            }
+//
+//            @Override
+//            protected void callback(User result) {
+//                if (result != null) {
+//                    Toast.makeText(getContext(),"登录成功",Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(getActivity(),MainActivity.class));
+//                    Log.e("LoginFragment",result.getAccount() + " - " + result.getPwd());
+//                } else {
+//                    Log.e("LoginFragment","null");
+//                }
+//            }
+//        });
     }
 
     private void loadShoesData() {

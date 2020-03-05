@@ -81,6 +81,10 @@ public class LoginViewModel extends ViewModel {
         return userRepository.login(account.getValue(),pwd.getValue());
     }
 
+    public LiveData<User> loginLD() {
+        return userRepository.loginLD(account.getValue(),pwd.getValue());
+    }
+
     /**
      * 第一次启动的时候调用
      */

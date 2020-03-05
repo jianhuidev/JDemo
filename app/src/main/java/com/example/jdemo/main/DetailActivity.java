@@ -3,6 +3,7 @@ package com.example.jdemo.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.animation.Animator;
@@ -49,35 +50,52 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void bindShoe(final long shoeId) {
-        Pool.execute(new XAsync<Shoe>() {
+        mViewModel.findShoeByIdLiveData(shoeId).observe(this, new Observer<Shoe>() {
             @Override
-            protected Shoe task() {
-                return mViewModel.getShoe(shoeId);
-            }
-
-            @Override
-            protected void callback(Shoe result) {
-                binding.setShoe(result);
+            public void onChanged(Shoe shoe) {
+                binding.setShoe(shoe);
             }
         });
+
+//        Pool.execute(new XAsync<Shoe>() {
+//            @Override
+//            protected Shoe task() {
+//                return mViewModel.getShoe(shoeId);
+//            }
+//
+//            @Override
+//            protected void callback(Shoe result) {
+//                binding.setShoe(result);
+//            }
+//        });
     }
 
     private void favourite(final long userId, final long shoeId) {
-        Pool.execute(new XAsync<FavouriteShoe>() {
+        mViewModel.getFavouriteShoe(userId, shoeId).observe(this, new Observer<FavouriteShoe>() {
             @Override
-            protected FavouriteShoe task() {
-                return mViewModel.getFavouriteShoe(userId, shoeId);
-            }
-
-            @Override
-            protected void callback(FavouriteShoe result) {
-                if (result == null) {
+            public void onChanged(FavouriteShoe favouriteShoe) {
+                if (favouriteShoe == null) {
                     binding.setVisible(View.VISIBLE);
                 } else {
                     binding.setVisible(View.GONE);
                 }
             }
         });
+//        Pool.execute(new XAsync<FavouriteShoe>() {
+//            @Override
+//            protected FavouriteShoe task() {
+//                return mViewModel.getFavouriteShoe(userId, shoeId);
+//            }
+//
+//            @Override
+//            protected void callback(FavouriteShoe result) {
+//                if (result == null) {
+//                    binding.setVisible(View.VISIBLE);
+//                } else {
+//                    binding.setVisible(View.GONE);
+//                }
+//            }
+//        });
     }
 
     private void setListener(final long userId, final long shoeId) {

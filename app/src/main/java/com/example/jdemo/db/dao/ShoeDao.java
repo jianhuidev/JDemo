@@ -26,6 +26,9 @@ public interface ShoeDao {
 
     // 配合LiveData 通过Id查询单款鞋子
     @Query("SELECT * FROM shoe WHERE id=:id")
+    LiveData<Shoe> findShoeByIdLiveData(long id);
+
+    @Query("SELECT * FROM shoe WHERE id=:id")
     Shoe findShoeByIdLD(long id);
 
     // 通过品牌查询鞋子

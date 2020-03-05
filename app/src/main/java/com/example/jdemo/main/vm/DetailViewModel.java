@@ -21,13 +21,17 @@ public class DetailViewModel extends ViewModel {
         return shoeRepository.getShoeById(shoeId);
     }
 
+    public LiveData<Shoe> findShoeByIdLiveData(long shoeId) {
+        return shoeRepository.findShoeByIdLiveData(shoeId);
+    }
+
 //    public LiveData<FavouriteShoe> getFavouriteShoe() {
 //
 //
 //
 //    }
 
-    public FavouriteShoe getFavouriteShoe(long userId, long shoeId) {
+    public LiveData<FavouriteShoe> getFavouriteShoe(long userId, long shoeId) {
         return favouriteShoeRepository.findFavouriteShoe(userId, shoeId);
     }
 

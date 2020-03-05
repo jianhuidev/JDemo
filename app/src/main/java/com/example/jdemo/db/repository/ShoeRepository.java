@@ -38,6 +38,9 @@ public class ShoeRepository {
         return shoeDao.findShoeByIdLD(id);
     }
 
+    public LiveData<Shoe> findShoeByIdLiveData(long id) {
+        return shoeDao.findShoeByIdLiveData(id);
+    }
     /**
      * 查询用户收藏的鞋
      */

@@ -28,6 +28,10 @@ public class UserRepository {
         return userDao.login(account,pwd);
     }
 
+    public LiveData<User> loginLD(String account, String pwd) {
+        return userDao.loginLD(account,pwd);
+    }
+
     public void updateUser(User user) {
         userDao.updateUser(user);
     }

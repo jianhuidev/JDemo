@@ -15,7 +15,7 @@ public class FavouriteShoeRepository {
     /**
      * 查看某个用户是否有喜欢记录
      */
-    public FavouriteShoe findFavouriteShoe(long userId, long shoeId) {
+    public LiveData<FavouriteShoe> findFavouriteShoe(long userId, long shoeId) {
         return favouriteShoeDao.findFavouriteShoeByUserIdAndShoeId(userId, shoeId);
     }
 //    fun findFavouriteShoe(userId:Long,shoeId:Long):LiveData<FavouriteShoe?>

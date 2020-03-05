@@ -17,6 +17,9 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE user_account = :account AND user_pwd = :pwd")
     User login(String account, String pwd);
 
+    @Query("SELECT * FROM user WHERE user_account = :account AND user_pwd = :pwd")
+    LiveData<User> loginLD(String account, String pwd);
+
     @Query("SELECT * FROM user WHERE id=:id")
     User findUserById(long id);
 

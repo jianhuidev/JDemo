@@ -20,7 +20,7 @@ public interface FavouriteShoeDao {
 
     // 查询单个FavouriteShoe
     @Query("SELECT * FROM fav_shoe WHERE user_id = :userId AND shoe_id =:shoeId")
-    FavouriteShoe findFavouriteShoeByUserIdAndShoeId(long userId, long shoeId);
+    LiveData<FavouriteShoe> findFavouriteShoeByUserIdAndShoeId(long userId, long shoeId);
 
     // 插入单个FavouriteShoe
     @Insert(onConflict = OnConflictStrategy.REPLACE)
